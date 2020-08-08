@@ -3,7 +3,7 @@ type colorProps = {
 };
 
 const Color: colorProps = {
-  themeColor: '',
+  themeColor: 'rgb(0, 122, 204)',
 };
 
 export default Color;

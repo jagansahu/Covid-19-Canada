@@ -3,7 +3,7 @@ type fontProps = {
 };
 
 const Font: fontProps = {
-  titleFont: 30,
+  titleFont: 50,
 };
 
 export default Font;
