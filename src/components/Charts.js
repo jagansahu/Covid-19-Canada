@@ -19,7 +19,7 @@ const option = {
 };
 
 const StyledChart = styled(ReactEcharts)`
-  width: 600px;
+  width: 100%;
   height: 300px;
 `;
 
