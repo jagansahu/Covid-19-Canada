@@ -12,7 +12,7 @@ const StyledSearch = styled(Search)`
 function SearchBar() {
   return (
     <StyledSearch
-      placeholder='input search text'
+      placeholder='Input province name'
       onSearch={(value) => console.log(value)}
       enterButton
     />
