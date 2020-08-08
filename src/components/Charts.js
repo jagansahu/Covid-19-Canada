@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
+import styled from 'styled-components';
 
 const option = {
   xAxis: {
@@ -16,8 +17,14 @@ const option = {
     },
   ],
 };
+
+const StyledChart = styled(ReactEcharts)`
+  width: 600px;
+  height: 300px;
+`;
+
 function Chart() {
-  return <ReactEcharts option={option as any} />;
+  return <StyledChart option={option} />;
 }
 
 export default Chart;

@@ -1,13 +1,20 @@
 import React from 'react';
-import Filter from './Filter';
+import CenterLeft from './CenterLeft';
+import CenterRight from './CenterRight';
 import styled from 'styled-components';
 
-const StyledCenter = styled.div``;
+const StyledCenter = styled.div`
+  margin-top: 50px;
+  div {
+    display: inline-block;
+  }
+`;
 
 function Center() {
   return (
     <StyledCenter>
-      <Filter />
+      <CenterLeft />
+      <CenterRight />
     </StyledCenter>
   );
 }

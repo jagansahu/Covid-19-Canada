@@ -4,9 +4,7 @@ import SearchBar from './SearchBar';
 import styled from 'styled-components';
 
 const StyledFilter = styled.div`
-  margin-top: 50px;
-  margin-left: 400px;
-  .div {
+  div {
     display: inline-block;
   }
 `;

@@ -3,31 +3,24 @@ import { Menu, Dropdown, Button } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
+const provinceList: string[] = [
+  'Ontario',
+  'Quebec',
+  'Nova Scotia',
+  'New Brunswick',
+  'Manitoba',
+  'British Columbia',
+  'Prince Edward Island',
+  'Saskatchewan',
+  'Alberta',
+  'Newfoundland and Labrador',
+];
+
 const menu = (
   <Menu>
-    <Menu.Item>
-      <a
-        target='_blank'
-        rel='noopener noreferrer'
-        href='http://www.alipay.com/'
-      >
-        1st menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a
-        target='_blank'
-        rel='noopener noreferrer'
-        href='http://www.taobao.com/'
-      >
-        2nd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target='_blank' rel='noopener noreferrer' href='http://www.tmall.com/'>
-        3rd menu item
-      </a>
-    </Menu.Item>
+    {provinceList.map((province) => {
+      return <Menu.Item>{province}</Menu.Item>;
+    })}
   </Menu>
 );
 
