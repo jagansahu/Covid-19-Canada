@@ -16,6 +16,7 @@
     "@types/styled-components": "^5.1.1",
     "antd": "^4.4.2",
     "dayjs": "^1.8.29",
+    "echarts": "^4.8.0",
     "echarts-for-react": "^2.0.16",
     "highlight.js": "^10.1.2",
     "react": "^16.13.1",
