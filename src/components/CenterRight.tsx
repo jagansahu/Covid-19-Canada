@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Button } from 'antd';
+import PropDropDown from './ProDropDown';
 import 'antd/dist/antd.css';
 
 const StyledCenterRight = styled.div`
@@ -9,20 +10,15 @@ const StyledCenterRight = styled.div`
   text-align: center;
 `;
 
-const SubTitle = styled.h1`
-  font-size: 30px;
-  color: #f6b906;
-`;
+type ButtonProps = {
+  color?: string;
+};
 
-const ProvinceSelection = styled.div``;
-
-const StyledButton = styled(Button)`
-  float: left;
-  margin: 10px;
-  border-radius: 4px;
-  &: hover {
-    color: #f6b906;
-  }
+const StyledButton = styled(Button)<ButtonProps>`
+  margin-left: 10px;
+  margin-right: 10px;
+  background: ${(props) => (props.color ? props.color : '')};
+  border: ${(props) => (props.color ? 'none' : '')};
 `;
 
 const ImgWrapper = styled.div`
@@ -32,19 +28,6 @@ const ImgWrapper = styled.div`
   border: 1px solid black;
   img {
     width: 90%;
-  }
-`;
-
-const CardsWrapper = styled.div``;
-
-const Card = styled.div`
-  padding-top: 10px;
-  border-radius: 6px;
-  width: 100px;
-  border: 1px solid black;
-  margin-right: 10px;
-  div {
-    margin-bottom: 20px;
   }
 `;
 
@@ -87,6 +70,10 @@ function CenterRight() {
   const [cases, setCases] = useState();
 
   const [deaths, setDeaths] = useState();
+
+  const handleClick = (key: any) => {
+    setProvince(parseInt(key.key));
+  };
 
   const getData = (json: any) => {
     const stringfiedJSON = JSON.stringify(json);
@@ -139,25 +126,15 @@ function CenterRight() {
 
   return (
     <StyledCenterRight>
-      <SubTitle>{mapPicList[province].name}</SubTitle>
-      <div style={{ color: 'blue' }}>Confirmed:</div>
-      <div style={{ color: 'blue', marginRight: 10 }}>{cases}</div>
-      <div style={{ color: 'red' }}>Deaths:</div>
-      <div style={{ color: 'red' }}>{deaths}</div>
-      <ProvinceSelection>
-        {provinceList.map((province, index: number) => {
-          return (
-            <StyledButton
-              type='primary'
-              onClick={() => {
-                setProvince(index);
-              }}
-            >
-              {province}
-            </StyledButton>
-          );
-        })}
-      </ProvinceSelection>
+      <PropDropDown
+        handleClick={handleClick}
+        province={province === 14 ? 'Canada' : provinceList[province]}
+        provinceList={provinceList}
+      ></PropDropDown>
+      <StyledButton type='primary'>Cases confirmed: {cases}</StyledButton>
+      <StyledButton type='primary' color='red'>
+        Deaths: {deaths}
+      </StyledButton>
       <ImgWrapper>
         <img alt='' src={mapPicList[province].src}></img>
       </ImgWrapper>

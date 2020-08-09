@@ -34,9 +34,10 @@ function ProDropDown({
       })}
     </Menu>
   );
+
   return (
     <div style={{ marginLeft: 10 }}>
-      <div style={{ marginRight: 5 }}>Select regions:</div>
+      <div style={{ marginRight: 5 }}>Select region:</div>
       <StyledDropDown overlay={menu} placement='bottomCenter'>
         <Button>{province}</Button>
       </StyledDropDown>

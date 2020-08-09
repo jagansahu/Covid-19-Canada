@@ -4,6 +4,7 @@ import CenterRight from './CenterRight';
 import styled from 'styled-components';
 
 const StyledCenter = styled.div`
+  margin-left: 30px;
   margin-top: 50px;
   display: flex;
   div {
@@ -14,8 +15,8 @@ const StyledCenter = styled.div`
 function Center() {
   return (
     <StyledCenter>
-      <CenterLeft />
       <CenterRight />
+      <CenterLeft />
     </StyledCenter>
   );
 }
