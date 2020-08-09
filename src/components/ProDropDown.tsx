@@ -1,20 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu, Dropdown, Button } from 'antd';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-
-export const provinceList: string[] = [
-  'Ontario',
-  'Quebec',
-  'Nova Scotia',
-  'New Brunswick',
-  'Manitoba',
-  'British Columbia',
-  'Prince Edward Island',
-  'Saskatchewan',
-  'Alberta',
-  'Newfoundland and Labrador',
-];
 
 const StyledDropDown = styled(Dropdown)`
   width: 100%;
@@ -22,9 +9,15 @@ const StyledDropDown = styled(Dropdown)`
 
 type ProDropDownProps = {
   handleClick: (key: any) => void;
+  province: string;
+  provinceList: string[];
 };
 
-function ProDropDown({ handleClick }: ProDropDownProps) {
+function ProDropDown({
+  handleClick,
+  provinceList,
+  province,
+}: ProDropDownProps) {
   const menu = (
     <Menu>
       {provinceList.map((province, index: number) => {
@@ -43,7 +36,7 @@ function ProDropDown({ handleClick }: ProDropDownProps) {
   );
   return (
     <StyledDropDown overlay={menu} placement='bottomCenter'>
-      <Button>Province</Button>
+      <Button>{province}</Button>
     </StyledDropDown>
   );
 }
