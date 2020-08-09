@@ -5,16 +5,11 @@ import Chart from './Charts';
 import styled from 'styled-components';
 
 const StyledCenterLeft = styled.div`
-  width: 700px;
-  margin-left: 300px;
-  border-right: 1px solid black;
+  flex: 1;
+  text-align: center;
 `;
 
-type CenterLeftProps = {
-  handleSwitch: (key: any) => void;
-};
-
-function CenterLeft({ handleSwitch }: CenterLeftProps) {
+function CenterLeft() {
   const [provinceList, setProvinceList] = useState([]);
   //We show diagrams for Canada by default
   const [province, setProvince] = useState('Canada');
@@ -25,7 +20,6 @@ function CenterLeft({ handleSwitch }: CenterLeftProps) {
 
   const handleClick = (key: any) => {
     setProvince(provinceList[parseInt(key.key)]);
-    handleSwitch(province);
   };
 
   const getData = (json: any) => {
@@ -67,6 +61,7 @@ function CenterLeft({ handleSwitch }: CenterLeftProps) {
           }
           setCases(result1 as any);
           setDeaths(result2 as any);
+          console.log(res.data.timeline.cases);
         });
     } else {
       //when province has been selected
@@ -98,8 +93,8 @@ function CenterLeft({ handleSwitch }: CenterLeftProps) {
         province={province}
         provinceList={provinceList}
       />
-      <Chart option={cases} title='Cases' />
-      <Chart option={deaths} title='Deaths' />
+      <Chart option={cases} title='Cases in past 30 days' />
+      <Chart option={deaths} title='Deaths in past 30 days' />
     </StyledCenterLeft>
   );
 }
