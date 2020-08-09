@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProDropDown from './ProDropDown';
+import DaysSelector from './DaysSelector';
 import axios from 'axios';
 import Chart from './Charts';
 import styled from 'styled-components';
@@ -14,12 +15,19 @@ function CenterLeft() {
   //We show diagrams for Canada by default
   const [province, setProvince] = useState('Canada');
 
+  const [days, setDays] = useState(30);
+
   const [cases, setCases] = useState([]);
 
   const [deaths, setDeaths] = useState([]);
 
   const handleClick = (key: any) => {
     setProvince(provinceList[parseInt(key.key)]);
+  };
+
+  const handleDay = (day: any) => {
+    const index = parseInt(day.key);
+    setDays(10 * (index + 1));
   };
 
   const getData = (json: any) => {
@@ -49,7 +57,9 @@ function CenterLeft() {
     if (province === 'Canada') {
       //get national data when province is not selected
       axios
-        .get('https://disease.sh/v3/covid-19/historical/Canada?lastdays=30')
+        .get(
+          `https://disease.sh/v3/covid-19/historical/Canada?lastdays=${days}`
+        )
         .then((res) => {
           let result1 = [];
           let result2 = [];
@@ -68,7 +78,7 @@ function CenterLeft() {
       const param = getParam(province);
       axios
         .get(
-          `https://disease.sh/v3/covid-19/historical/Canada/${param}?lastdays=30`
+          `https://disease.sh/v3/covid-19/historical/Canada/${param}?lastdays=${days}`
         )
         .then((res) => {
           let result1 = [];
@@ -84,7 +94,7 @@ function CenterLeft() {
           setDeaths(result2 as any);
         });
     }
-  }, [province]);
+  }, [province, days]);
 
   return (
     <StyledCenterLeft>
@@ -93,8 +103,9 @@ function CenterLeft() {
         province={province}
         provinceList={provinceList}
       />
-      <Chart option={cases} title='Cases in past 30 days' />
-      <Chart option={deaths} title='Deaths in past 30 days' />
+      <DaysSelector handleDay={handleDay} days={days} />
+      <Chart option={cases} title='Cases confirmed' days={days} />
+      <Chart option={deaths} title='Deaths' days={days} />
     </StyledCenterLeft>
   );
 }
