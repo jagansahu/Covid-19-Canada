@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
 const StyledDropDown = styled(Dropdown)`
-  width: 100%;
+  width: 30%;
   margin-bottom: 30px;
 `;
 

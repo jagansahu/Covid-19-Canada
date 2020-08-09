@@ -7,9 +7,14 @@ import styled from 'styled-components';
 const StyledCenterLeft = styled.div`
   width: 700px;
   margin-left: 300px;
+  border-right: 1px solid black;
 `;
 
-function CenterLeft() {
+type CenterLeftProps = {
+  handleSwitch: (key: any) => void;
+};
+
+function CenterLeft({ handleSwitch }: CenterLeftProps) {
   const [provinceList, setProvinceList] = useState([]);
   //We show diagrams for Canada by default
   const [province, setProvince] = useState('Canada');
@@ -18,10 +23,9 @@ function CenterLeft() {
 
   const [deaths, setDeaths] = useState([]);
 
-  const [recovered, setRecovered] = useState([]);
-
   const handleClick = (key: any) => {
     setProvince(provinceList[parseInt(key.key)]);
+    handleSwitch(province);
   };
 
   const getData = (json: any) => {
@@ -42,34 +46,27 @@ function CenterLeft() {
   };
 
   useEffect(() => {
+    //get province list
     axios
       .get('https://disease.sh/v3/covid-19/historical/Canada?lastdays=30')
-      .then((res) => setProvinceList(res.data.province));
+      .then((res) => {
+        setProvinceList(res.data.province);
+      });
     if (province === 'Canada') {
       //get national data when province is not selected
       axios
         .get('https://disease.sh/v3/covid-19/historical/Canada?lastdays=30')
         .then((res) => {
-          console.log(res.data.timeline);
           let result1 = [];
           let result2 = [];
-          let result3 = [];
           for (let i = 0; i < getData(res.data.timeline.cases).length; i++) {
             result1.push(getData(res.data.timeline.cases)[i]);
           }
           for (let i = 0; i < getData(res.data.timeline.deaths).length; i++) {
             result2.push(getData(res.data.timeline.deaths)[i]);
           }
-          for (
-            let i = 0;
-            i < getData(res.data.timeline.recovered).length;
-            i++
-          ) {
-            result3.push(getData(res.data.timeline.recovered)[i]);
-          }
           setCases(result1 as any);
           setDeaths(result2 as any);
-          setRecovered(result3 as any);
         });
     } else {
       //when province has been selected
@@ -81,23 +78,15 @@ function CenterLeft() {
         .then((res) => {
           let result1 = [];
           let result2 = [];
-          let result3 = [];
+
           for (let i = 0; i < getData(res.data.timeline.cases).length; i++) {
             result1.push(getData(res.data.timeline.cases)[i]);
           }
           for (let i = 0; i < getData(res.data.timeline.deaths).length; i++) {
             result2.push(getData(res.data.timeline.deaths)[i]);
           }
-          for (
-            let i = 0;
-            i < getData(res.data.timeline.recovered).length;
-            i++
-          ) {
-            result3.push(getData(res.data.timeline.recovered)[i]);
-          }
           setCases(result1 as any);
           setDeaths(result2 as any);
-          setRecovered(result3 as any);
         });
     }
   }, [province]);
@@ -111,7 +100,6 @@ function CenterLeft() {
       />
       <Chart option={cases} title='Cases' />
       <Chart option={deaths} title='Deaths' />
-      <Chart option={recovered} title='Recovered' />
     </StyledCenterLeft>
   );
 }
