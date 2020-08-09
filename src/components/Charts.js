@@ -3,7 +3,7 @@ import ReactEcharts from 'echarts-for-react';
 import styled from 'styled-components';
 
 const StyledChart = styled(ReactEcharts)`
-  width: 100%;
+  width: 80%;
   height: 300px;
 `;
 
@@ -13,8 +13,7 @@ function Chart(props) {
     for (let i = 1; i <= props.days; i++) {
       data.push(i);
     }
-    console.log(data);
-  });
+  }, [data]);
 
   const option = {
     title: {

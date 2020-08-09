@@ -71,7 +71,6 @@ function CenterLeft() {
           }
           setCases(result1 as any);
           setDeaths(result2 as any);
-          console.log(res.data.timeline.cases);
         });
     } else {
       //when province has been selected
