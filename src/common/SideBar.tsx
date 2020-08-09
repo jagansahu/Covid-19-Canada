@@ -33,7 +33,10 @@ function SideBar() {
       <Space>
         <Radio.Group defaultValue={placement} onChange={onChange}></Radio.Group>
         <Button type='primary' onClick={toggleDrawer}>
-          <a className='iconfont icon-chouti' style={{ color: 'white' }}></a>
+          <a
+            className='iconfont icon-chouti'
+            style={{ color: 'white', fontWeight: 1000 }}
+          ></a>
         </Button>
       </Space>
       <StyledDrawer

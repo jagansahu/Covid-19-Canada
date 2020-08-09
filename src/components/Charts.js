@@ -9,11 +9,10 @@ const StyledChart = styled(ReactEcharts)`
 
 function Chart(props) {
   let data = [];
-  useEffect(() => {
-    for (let i = 1; i <= props.days; i++) {
-      data.push(i);
-    }
-  }, [data]);
+
+  for (let i = 1; i <= props.days; i++) {
+    data.push(i);
+  }
 
   const option = {
     title: {

@@ -140,10 +140,10 @@ function CenterRight() {
   return (
     <StyledCenterRight>
       <SubTitle>{mapPicList[province].name}</SubTitle>
-      <div>Confirmed:</div>
-      <div>{cases}</div>
-      <div>Deaths:</div>
-      <div>{deaths}</div>
+      <div style={{ color: 'blue' }}>Confirmed:</div>
+      <div style={{ color: 'blue', marginRight: 10 }}>{cases}</div>
+      <div style={{ color: 'red' }}>Deaths:</div>
+      <div style={{ color: 'red' }}>{deaths}</div>
       <ProvinceSelection>
         {provinceList.map((province, index: number) => {
           return (
