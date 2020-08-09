@@ -6,7 +6,6 @@ import Chart from './Charts';
 import styled from 'styled-components';
 
 const StyledCenterLeft = styled.div`
-  flex: 1;
   text-align: center;
 `;
 
@@ -97,12 +96,14 @@ function CenterLeft() {
 
   return (
     <StyledCenterLeft>
-      <ProDropDown
-        handleClick={handleClick}
-        province={province}
-        provinceList={provinceList}
-      />
-      <DaysSelector handleDay={handleDay} days={days} />
+      <div>
+        <ProDropDown
+          handleClick={handleClick}
+          province={province}
+          provinceList={provinceList}
+        />
+        <DaysSelector handleDay={handleDay} days={days} />
+      </div>
       <Chart option={cases} title='Cases confirmed' days={days} />
       <Chart option={deaths} title='Deaths' days={days} />
     </StyledCenterLeft>

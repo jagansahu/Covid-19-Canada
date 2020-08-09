@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 import styled from 'styled-components';
 
 const StyledChart = styled(ReactEcharts)`
-  width: 80%;
+  width: 50%;
   height: 300px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 function Chart(props) {

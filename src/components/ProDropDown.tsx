@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 
 const StyledDropDown = styled(Dropdown)`
   margin-bottom: 30px;
+  display: inline-block;
 `;
 
 type ProDropDownProps = {

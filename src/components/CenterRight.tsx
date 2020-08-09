@@ -6,8 +6,8 @@ import PropDropDown from './ProDropDown';
 import 'antd/dist/antd.css';
 
 const StyledCenterRight = styled.div`
-  flex: 1;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 type ButtonProps = {
@@ -15,19 +15,22 @@ type ButtonProps = {
 };
 
 const StyledButton = styled(Button)<ButtonProps>`
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 20px;
+  margin-top: 0px;
   background: ${(props) => (props.color ? props.color : '')};
   border: ${(props) => (props.color ? 'none' : '')};
 `;
 
 const ImgWrapper = styled.div`
-  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 30%;
   height: 
   object-fit: fill;
-  border: 1px solid black;
   img {
-    width: 90%;
+    width: 70%;
+    height: 30%;
   }
 `;
 

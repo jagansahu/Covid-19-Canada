@@ -6,10 +6,6 @@ import styled from 'styled-components';
 const StyledCenter = styled.div`
   margin-left: 30px;
   margin-top: 50px;
-  display: flex;
-  div {
-    display: inline-block;
-  }
 `;
 
 function Center() {
