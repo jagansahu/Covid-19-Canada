@@ -83,7 +83,27 @@ function CenterRight() {
 
   const [provinceList, setProvinceList] = useState([]);
   const [province, setProvince] = useState(14);
-  // const [name, setName] = useState(mapPicList[province].name);
+
+  const [cases, setCases] = useState();
+
+  const [deaths, setDeaths] = useState();
+
+  const getData = (json: any) => {
+    const stringfiedJSON = JSON.stringify(json);
+    const obj = JSON.parse(stringfiedJSON);
+    return Object.keys(obj).map(function (key) {
+      return obj[key];
+    });
+  };
+
+  const getParam = (str: string): string => {
+    if (str.includes(' ')) {
+      const res = str.replace(' ', '%20');
+      return res;
+    } else {
+      return str;
+    }
+  };
 
   useEffect(() => {
     //get province list
@@ -93,21 +113,37 @@ function CenterRight() {
         setProvinceList(res.data.province);
       });
     const proName = provinceList[province];
-  }, [province]);
+    if (proName === undefined) {
+      axios
+        .get(`https://disease.sh/v3/covid-19/historical/Canada?lastdays=1`)
+        .then((res) => {
+          let result1 = getData(res.data.timeline.cases)[0];
+          let result2 = getData(res.data.timeline.deaths)[0];
+          setCases(result1 as any);
+          setDeaths(result2 as any);
+        });
+    } else {
+      const param = getParam(proName);
+      axios
+        .get(
+          `https://disease.sh/v3/covid-19/historical/Canada/${param}?lastdays=1`
+        )
+        .then((res) => {
+          let result1 = getData(res.data.timeline.cases)[0];
+          let result2 = getData(res.data.timeline.deaths)[0];
+          setCases(result1 as any);
+          setDeaths(result2 as any);
+        });
+    }
+  }, [province, cases, deaths]);
 
   return (
     <StyledCenterRight>
       <SubTitle>{mapPicList[province].name}</SubTitle>
-      <CardsWrapper>
-        <Card>
-          <div>Confirmed</div>
-          <div></div>
-        </Card>
-        <Card>
-          <div>Deaths</div>
-          <div></div>
-        </Card>
-      </CardsWrapper>
+      <div>Confirmed:</div>
+      <div>{cases}</div>
+      <div>Deaths:</div>
+      <div>{deaths}</div>
       <ProvinceSelection>
         {provinceList.map((province, index: number) => {
           return (
