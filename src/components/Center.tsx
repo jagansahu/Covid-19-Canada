@@ -4,17 +4,15 @@ import CenterRight from './CenterRight';
 import styled from 'styled-components';
 
 const StyledCenter = styled.div`
+  margin-left: 30px;
   margin-top: 50px;
-  div {
-    display: inline-block;
-  }
 `;
 
 function Center() {
   return (
     <StyledCenter>
-      <CenterLeft />
       <CenterRight />
+      <CenterLeft />
     </StyledCenter>
   );
 }

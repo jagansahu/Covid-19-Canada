@@ -1,44 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Covid-19 Canada
 
-## Available Scripts
+Group project for HackInstead. Group members: Jagan, Chien, Abhinav and Feng.
 
-In the project directory, you can run:
+### Purpose of this Project
 
-### `npm start`
+Even though there are already many websites that provide information about Covid-19 stats, either officially built or personally built. But they are not oriented around how the situation is in Canada, which means it takes some efforts for us Canadians to find Covid-19 status of Canada. So, we chose to built Covid-19 Canada to help Canadians to instantly access to such info with just one click.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### What This App Actually Does
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Allows users to select a specific region in Canada and see how many people have been infected and died due to Covid-19
+2. Allows users to see cumulative graphs of how number of people being infected and died in past 10 to 50 days. Users are able to choose how many days they want to see.  
 
-### `npm test`
+### Job Assignment
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<strong>1.Jagan:</strong> worked on Canada map implementation and selection of province.
+<br>
+<strong>2.Chien:</strong> designed for the UI and UX of this application
+<br>
+<strong>3.Abhinav:</strong> did the project presentation and proposed on the future development of this app.
+<br>
+<strong>4.Feng:</strong> got stats of Covid-19 in Canada from API provided by John Hopkins University, made according visualization of the data with Echarts.js.
 
-### `npm run build`
+### Tech Stack
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Front-end: React + TypeScript + Axios + HTML5 + CSS3
+<br>
+Back-end: we simply use public API provided by John Hopkins University

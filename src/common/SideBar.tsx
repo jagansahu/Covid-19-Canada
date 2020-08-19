@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Menu, Button } from 'antd';
-import {
-  AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  PieChartOutlined,
-  DesktopOutlined,
-  ContainerOutlined,
-} from '@ant-design/icons';
+import { Drawer, Button, Radio, Space } from 'antd';
+import Color from '../theme/color';
 import 'antd/dist/antd.css';
-
-const { SubMenu } = Menu;
 
 const StyledSideBar = styled.div`
   margin-top: 10px;
@@ -19,46 +10,53 @@ const StyledSideBar = styled.div`
   width: 256px;
 `;
 
+const StyledDrawer = styled(Drawer)`
+  p {
+    color: ${Color.themeColor};
+    cursor: pointer;
+  }
+`;
+
 function SideBar() {
-  const [collapsed, setCollapsed] = useState(true);
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
+  const [visible, setVisible] = useState(false);
+  const [placement, setPlacement] = useState('left');
+  const toggleDrawer = () => {
+    setVisible(!visible);
+  };
+
+  const onChange = (e: any) => {
+    setPlacement(e.target.value);
   };
 
   return (
     <StyledSideBar>
-      <Button
-        type='primary'
-        onClick={toggleCollapsed}
-        style={{ marginBottom: 16 }}
+      <Space>
+        <Radio.Group defaultValue={placement} onChange={onChange}></Radio.Group>
+        <Button type='primary' onClick={toggleDrawer}>
+          <a
+            className='iconfont icon-chouti'
+            style={{ color: 'white', fontWeight: 1000 }}
+          ></a>
+        </Button>
+      </Space>
+      <StyledDrawer
+        title='Covid-19 Canada'
+        placement={placement as any}
+        closable={false}
+        onClose={toggleDrawer}
+        visible={visible}
+        key={placement}
       >
-        {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-      </Button>
-      <Menu
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode='inline'
-        theme='dark'
-        inlineCollapsed={collapsed}
-      >
-        <Menu.Item key='1' icon={<PieChartOutlined />}>
-          Option 1
-        </Menu.Item>
-        <Menu.Item key='2' icon={<DesktopOutlined />}>
-          Option 2
-        </Menu.Item>
-        <Menu.Item key='3' icon={<ContainerOutlined />}>
-          Option 3
-        </Menu.Item>
-        <SubMenu key='sub2' icon={<AppstoreOutlined />} title='Navigation Two'>
-          <Menu.Item key='9'>Option 9</Menu.Item>
-          <Menu.Item key='10'>Option 10</Menu.Item>
-          <SubMenu key='sub3' title='Submenu'>
-            <Menu.Item key='11'>Option 11</Menu.Item>
-            <Menu.Item key='12'>Option 12</Menu.Item>
-          </SubMenu>
-        </SubMenu>
-      </Menu>
+        <p>
+          <i className='iconfont icon-ditu'></i>Show Map Only
+        </p>
+        <p>
+          <i className='iconfont  icon-yiwen'></i>Usage
+        </p>
+        <p>
+          <i className='iconfont icon-ren'></i>Our Team
+        </p>
+      </StyledDrawer>
     </StyledSideBar>
   );
 }

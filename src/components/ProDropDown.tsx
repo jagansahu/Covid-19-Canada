@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
 const StyledDropDown = styled(Dropdown)`
-  width: 100%;
+  margin-bottom: 30px;
+  display: inline-block;
 `;
 
 type ProDropDownProps = {
@@ -34,10 +35,14 @@ function ProDropDown({
       })}
     </Menu>
   );
+
   return (
-    <StyledDropDown overlay={menu} placement='bottomCenter'>
-      <Button>{province}</Button>
-    </StyledDropDown>
+    <div style={{ marginLeft: 10 }}>
+      <div style={{ marginRight: 5 }}>Select region:</div>
+      <StyledDropDown overlay={menu} placement='bottomCenter'>
+        <Button>{province}</Button>
+      </StyledDropDown>
+    </div>
   );
 }
 
