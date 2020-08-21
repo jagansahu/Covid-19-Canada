@@ -12,7 +12,7 @@ const StyledHeader = styled.div`
 `;
 
 function Header() {
-  return <StyledHeader>Covid-19 Canada</StyledHeader>;
+  return <StyledHeader>COVID-19 CANADA</StyledHeader>;
 }
 
 export default Header;
